@@ -9,48 +9,42 @@ export const api = axios.create({
   },
 });
 
+const refreshAccessToken = async () => {
+  const response = await api.get(
+    '/auth/refresh',
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(
+          'accessToken'
+        )} ${localStorage.getItem('refreshToken')}`,
+      },
+    },
+    { withCredentials: true }
+  );
+
+  return response.data;
+};
+
 api.interceptors.response.use(
-  config => {
-    return config;
+  response => {
+    return response;
   },
   async error => {
     const originalRequest = error.config;
+    if (!!originalRequest._retry) {
+      originalRequest._retry = true;
 
-    console.log(error.config);
+      const { accessToken, refreshToken } = await refreshAccessToken();
 
-    if (
-      // error.response.status === 401 &&
-      error.config &&
-      !error.config._isRetry
-    ) {
-      error.config._isRetry = true;
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
 
-      try {
-        const response = await axios.get(
-          'http://localhost:9000/auth/refresh',
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem(
-                'accessToken'
-              )} ${localStorage.getItem('refreshToken')}`,
-            },
-          },
-          { withCredentials: true }
-        );
-        console.log('Using interceptor', response.data);
+      originalRequest.headers[
+        'Authorization'
+      ] = `Bearer ${accessToken} ${refreshToken}`;
 
-        const { accessToken, refreshToken } = response.data;
-
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('refreshToken', refreshToken);
-
-        originalRequest.headers.Authorization = `Bearer ${response.data.accessToken} ${response.data.refreshToken}`;
-
-        return api.request(originalRequest);
-      } catch (error) {
-        console.log('Unauthorized');
-      }
+      return api(originalRequest);
     }
-    throw error;
+    return Promise.reject(error);
   }
 );

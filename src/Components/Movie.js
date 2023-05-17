@@ -14,7 +14,7 @@ const Movie = ({ movie }) => {
   } = movie;
 
   return (
-    <div className="bg-black white pa4 mb4 br4 ma3 mh4 grow shadow-2 pointer w-90 center">
+    <div className="bg-black-80 white pa4 mb4 br4 ma3 mh4 grow shadow-2 pointer w-90 center">
       <div className="flex flex-column flex-row-ns">
         <img
           className="w-50 w-25-ns mr3 br2"

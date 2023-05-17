@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { api } from '../api';
+import { setSearchUser } from '../helpers/user.helper';
 
 const UserSearch = () => {
   const [users, setUsers] = useState([]);
@@ -14,6 +15,12 @@ const UserSearch = () => {
     fetchUsers();
   };
 
+  const handleUserSelect = uid => {
+    setSearchUser(uid);
+
+    window.location.replace('/profile');
+  };
+
   return (
     <div>
       <input
@@ -23,9 +30,13 @@ const UserSearch = () => {
       />
       <ul>
         {users.map(user => (
-          <li key={user._id}>
+          <li
+            key={user._id}
+            className="white pointer"
+            onClick={() => handleUserSelect(user._id)}
+          >
             <div>
-              <h3>{user.username}</h3>
+              <h3 className="">{user.username}</h3>
             </div>
           </li>
         ))}

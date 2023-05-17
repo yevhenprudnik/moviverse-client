@@ -53,7 +53,7 @@ const CreateCollection = () => {
   };
 
   return (
-    <form className="pa4 black-80" onSubmit={handleSubmit}>
+    <form className="pa4 black-80 white" onSubmit={handleSubmit}>
       <div className="measure">
         <label htmlFor="title" className="f6 b db mb2">
           Title:
