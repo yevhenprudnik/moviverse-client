@@ -55,7 +55,7 @@ const Home = () => {
       <div className="flex flex-wrap justify-center">
         <Link
           onMouseEnter={() => {
-            setSearchUser(getCurrentUser._id);
+            setSearchUser(getCurrentUser?._id);
           }}
           to="/profile"
           className="w-70"
