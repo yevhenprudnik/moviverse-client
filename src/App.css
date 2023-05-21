@@ -1,0 +1,144 @@
+.w50 {
+    width: 50vw;
+}
+
+.w25 {
+    width: 25vw;
+}
+
+.authBtn {
+    border: 3px solid orange;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    transition: 0.2s linear;
+}
+
+.authBtn:hover {
+    border-color: white;
+    color: orange;
+}
+
+.btn1 {
+    border: 3px solid orange;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    transition: 0.2s linear;
+}
+
+.btn1:hover {
+    border-color: white;
+    color: orange;
+}
+
+.authInput {
+    background-color: black;
+    color: white;
+    border: none;
+    border-bottom: 1px solid orangered;
+    width: 17.5vw;
+    transition: 0.2s linear;
+}
+
+.authInput:focus {
+    outline: none;
+    border-bottom: 1px solid white;
+}
+
+.menuBtn {
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    padding: 20px 15vw 20px 15vw;
+    margin: 3px 0px ;
+    border: 3px solid white;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: black;
+    transition: 0.2s linear;
+}
+
+.menuBtn:hover {
+    border-color: firebrick;
+    scale:calc(1.03);
+}
+
+.menuBtn:active {
+    border-color: yellow;
+}
+
+.bg-black-tsp {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.searchMovies {
+    width: 50vw;
+    height: 50px;
+    outline: none;
+    font-weight: 400;
+    font-size: 1.3rem;
+    border: 3px solid orange;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    transition: 0.2s linear;
+    margin-left: 20px;
+}
+
+.searchMovies:hover {
+    scale: calc(1.01);
+}
+
+.searchMovies:focus {
+    scale: calc(1.01);
+    border-color: greenyellow; 
+}
+
+.newCollectionForm {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 3px solid orangered;
+    width: 50%;
+    height: 50%;
+    min-width: 450px;
+    min-height: 450px;
+    background-color: black;
+}
+
+.new-collection-input {
+    color: white;
+    outline: none;
+    background-color: black;
+    border: 0px;
+    border-bottom: 1px solid orangered;
+    transition: 0.2s linear;
+    margin-top: 5px;
+}
+
+.new-collection-input:focus {
+    border-color: white;
+}
+
+.new-collection-selector {
+    margin-top: 5px;
+    outline: none;
+    border: 0px;
+}
+
+.new-collection-selector--menu {
+    color: red;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    background-color: black; 
+    margin: 10px;
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
+    border: 3px solid orange;
+}
